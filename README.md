@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Verify the signed release attestation
-        uses: a95674127-beep/mack-verify-action@v1
+        uses: a95674127-beep/mack-verify-action@v0.1.0
         with:
           file: ATTESTATION.md
           namespace: mack-release
@@ -32,7 +32,7 @@ jobs:
 Or authorize a single key directly:
 
 ```yaml
-      - uses: a95674127-beep/mack-verify-action@v1
+      - uses: a95674127-beep/mack-verify-action@v0.1.0
         with:
           file: release-notes.md
           namespace: file
@@ -56,7 +56,8 @@ This repository's test fixtures are a real, published attestation: the
 owner release attestation for the **MACK** zero-trust stack, signed
 2026-11-02. The same three files live in the public
 [mack-verification](https://github.com/a95674127-beep/mack-verification)
-repository, and this Action's own CI re-verifies them on every push:
+repository, and the crate's test suite re-verifies them against this
+implementation on every run:
 
 ```
 Good "mack-release" signature for allenmack with ED25519 key SHA256:iKgJ7s1r96fDWGlcPYObuL1cGYJNYL5e1npeF3KSZws
