@@ -1,0 +1,30 @@
+name: 'MACK Verify'
+description: 'Verify OpenSSH (ssh-keygen -Y) signed files in CI against your allowed signers. Ed25519, no shelling out.'
+author: 'Allen Mack'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  file:
+    description: 'Path to the signed file.'
+    required: true
+  sig:
+    description: 'Path to the armored signature file. Defaults to the file path with ".sig" appended.'
+    required: false
+  namespace:
+    description: 'Signature namespace the file must be signed under (e.g. mack-release, file, git).'
+    required: true
+  allowed_signers:
+    description: 'Path to an OpenSSH allowed_signers file. Use together with identity.'
+    required: false
+  identity:
+    description: 'Identity in the allowed_signers file whose key must have signed.'
+    required: false
+  pubkey:
+    description: 'A single authorized public key (OpenSSH line, or a path to a file holding one). Alternative to allowed_signers.'
+    required: false
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

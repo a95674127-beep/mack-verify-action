@@ -1,0 +1,15 @@
+[package]
+name = "mack-verify"
+version = "0.1.0"
+edition = "2021"
+description = "Verify OpenSSH (ssh-keygen -Y) signed files in CI — attestations, release notes, manifests — against your allowed signers."
+license = "MIT"
+authors = ["Allen Mack"]
+
+[dependencies]
+base64 = "0.22"
+ed25519-dalek = "2"
+sha2 = "0.10"
+
+[profile.release]
+opt-level = 3
